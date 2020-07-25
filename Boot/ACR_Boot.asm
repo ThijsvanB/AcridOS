@@ -1,21 +1,15 @@
 [bits 16]
 [org 0x7c00]
 KERNEL_OFFSET equ 0x1000
-    mov ah, 0x0e        		;Set a begin message
-    mov al, '0'
-    int 0x10
-          
     mov [BOOT_DRIVE], dl  		;Set location of drive
                                 
     mov bp, 0x8000			;Set stack   It's a little above the bootsector
     mov ss, bp
     mov sp, 0xf000
     
-    call load_kernel
+    call load_kernel                    ;Load kernel
     
-    call switch_to_pm
-    
-    jmp $
+    call switch_to_pm                   ;Switch to 32 bit mode
 
 [bits 16]
 disk_load:
@@ -48,26 +42,17 @@ gdt_start:
     
     
 gdt_null:
-    dd 0x0
-    dd 0x0
+    dd 0x0, 0x0
     
 
 gdt_code:
-    dw 0xffff
-    dw 0x0
-    db 0x0
-    db 10011010b
-    db 11001111b
-    db 0x0
+    dw 0xffff, 0x0
+    db 0x0, 10011010b, 11001111b, 0x0
 
 
 gdt_data:
-    dw 0xffff
-    dw 0x0
-    db 0x0
-    db 10010010b
-    db 11001111b
-    db 0x0
+    dw 0xffff, 0x0
+    db 0x0, 10010010b, 11001111b, 0x0
     
     
 gdt_end:
@@ -84,10 +69,6 @@ DATA_SEG equ gdt_data - gdt_start
 
 [bits 16]
 load_kernel:
-    mov ah, 0x0e
-    mov al, '1'
-    int 0x10
-    
     mov bx, KERNEL_OFFSET
     mov dh, 15
     mov dl, [BOOT_DRIVE]
@@ -95,38 +76,8 @@ load_kernel:
     
     ret
 
-[bits 32]
-VIDEO_MEMORY equ 0xb8000
-WHITE_ON_BLACK equ 0x0f
-    
-print_string_pm:
-    pusha
-    mov edx, VIDEO_MEMORY
-    
-print_string_pm_loop:
-    mov al, [ebx]
-    mov ah, WHITE_ON_BLACK
-            
-    cmp al, 0
-    je print_string_pm_done
-    
-    mov[edx], ax
-    
-    add ebx, 1
-    add edx, 2
-    
-    jmp print_string_pm_loop
-
-print_string_pm_done:
-    popa
-    ret
-
 [bits 16]
 switch_to_pm:
-    mov ah, 0x0e
-    mov al, '2'
-    int 0x10
-
     cli
     
     lgdt [gdt_descriptor]
@@ -155,15 +106,11 @@ init_pm:
 
 [bits 32]  
 BEGIN_PM:
-    mov ebx, MSG_PROT_MODE
-    call print_string_pm
-    
     call KERNEL_OFFSET
-
+    
     jmp $
 
 BOOT_DRIVE db 0
-MSG_PROT_MODE db "32 bit mode", 0
 
 TIMES 510 - ($-$$) db 0
 DW 0xAA55
