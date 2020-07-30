@@ -3,8 +3,8 @@ OBJ=Acrid
 all: $(OBJ)
 	
 Acrid: ACR_Boot kern
-	type Boot\ACR_Boot.bin Kernel\bin\kernel.bin > Acrid.img
-	qemu-system-i386 Acrid.img
+	type Boot\ACR_Boot.bin Kernel\bin\kernel.bin > Acrid.iso
+	qemu-system-i386 Acrid.iso
 	
 ACR_Boot:
 	make -C Boot
