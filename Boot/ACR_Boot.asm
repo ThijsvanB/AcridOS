@@ -23,20 +23,12 @@ disk_load:
     
     int 0x13
     
-;    jc disk_error
+;   jc disk_error
     
     pop dx
 ;   cmp dh, al
 ;   jne disk_error
     ret
-    
-disk_error:
-    mov ah, 0x0e
-    mov al, 'D'
-    int 0x10
-    
-    jmp $
-
 
 gdt_start:
     
