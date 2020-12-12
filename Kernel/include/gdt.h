@@ -17,7 +17,7 @@ struct gdt_ptr {
 struct gdt_desc gdt[3];
 struct gdt_ptr ptr;
 
-struct gdt_desc filldesc(unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
+struct gdt_desc fillgdtdesc(unsigned long base, unsigned long limit, unsigned char access, unsigned char gran);
 
 void setup_gdt();
 

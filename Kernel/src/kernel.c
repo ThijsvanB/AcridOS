@@ -2,11 +2,13 @@
 #include "../include/string.h"
 #include "../include/ports.h"
 #include "../include/gdt.h"
+#include "../include/idt.h"
 
 void start() {
 	cur_enable();
 
-	setup_gdt;
+	setup_gdt();
+	setup_idt();
 
 	clrscr();
 	setcolor(0x0F);
