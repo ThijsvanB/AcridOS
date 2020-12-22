@@ -1,4 +1,3 @@
-
 unsigned int strlen(const char* string);
 
 void strcpy(char* dest, const char* src);
