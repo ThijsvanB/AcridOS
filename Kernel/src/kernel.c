@@ -1,9 +1,9 @@
-#include "../include/terminal.h"
 #include "../include/string.h"
 #include "../include/gdt.h"
 #include "../include/idt.h"
 #include "../include/serial_port.h"
 #include "../include/pit.h"
+#include "../include/keyboard.h"
 
 extern void callint(void);
 
