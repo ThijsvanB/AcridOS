@@ -26,6 +26,12 @@ void putc(char c) {
 		col = 0;
 		row++;
 		break;
+	case KC_BACK:
+		if (col > 0) {
+			col--;
+			vidmem[index - 1] = ((unsigned short)color << 8) | ' ';
+		}
+		break;
 	default:
 		vidmem[index] = ((unsigned short)color << 8) | c;
 		col++;

@@ -1,5 +1,7 @@
 #define SCREENADDRESS 0xB8000
 
+#define KC_BACK 0x08
+
 #include "math.h"
 #include "cursor.h"
 #include "serial_port.h"
