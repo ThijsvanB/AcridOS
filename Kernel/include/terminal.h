@@ -5,6 +5,7 @@
 #include "math.h"
 #include "cursor.h"
 #include "serial_port.h"
+#include "memory.h"
 
 #ifdef __TERMINAL__
 
@@ -23,3 +24,6 @@ void puti(int i);
 void puts(char* s);
 
 void printf(char* format, ...);
+
+int getrow();
+int getcol();

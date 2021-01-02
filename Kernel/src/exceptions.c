@@ -1,17 +1,112 @@
 #include "..\include\serial_port.h"
 #include "..\include\terminal.h"
 
-void int_def() {
+void exc_def() {
 	printf("Default\n");
 	sp_printf("Default\n");
 }
 
-void int_div0(void) {
+void exc_div0(void) {
 	printf("division 0\n");
 	sp_printf("division 0\n");
 }
 
-void int_gp() {
+void exc_debug(void) {
+	printf("Debug\n");
+	sp_printf("Debug\n");
+}
+
+void int_NMI() {
+	printf("NMI\n");
+	sp_printf("NMI\n");
+}
+
+void exc_Break() {
+	printf("Break\n");
+	sp_printf("Break\n");
+}
+
+void exc_overflow() {
+	printf("overflow\n");
+	sp_printf("overflow\n");
+}
+
+void exc_BRE() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_InvOpc() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_DNA() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_DF() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_CSO() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_InvTSS() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_SNP() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_SSF() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_gp(void) {
 	printf("GP fault\n");
-	sp_printf("GP fault\n");
+	sp_printf("GP fault");
+}
+
+void exc_PageFault() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_x87FP() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_Align() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_Machine() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_SIMDFloat() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_Virt() {
+	printf("Default\n");
+	sp_printf("Default\n");
+}
+
+void exc_Security() {
+	printf("Default\n");
+	sp_printf("Default\n");
 }

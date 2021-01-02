@@ -19,5 +19,5 @@ void start() {
 
 	clrscr();
 	setcolor(0x0F);
-	printf("Welcome to AcridOs V0.1.4\n");
+	printf("Welcome to AcridOs V0.2.0\n");
 }

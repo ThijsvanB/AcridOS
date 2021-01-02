@@ -2,10 +2,10 @@
 #include "../include/terminal.h"
 
 void clrscr() {
-	unsigned short* vidmem = (unsigned short*)0xB8000;
+	unsigned short* vidmem = (unsigned short*)SCREENADDRESS;
 
 	for (int i = 0; i < 2000; i++) {
-		vidmem[i] = ((unsigned short)color << 8) | ' ';
+		vidmem[i] = ((unsigned short)color << 8) | '\0';
 	}
 	col = 0;
 	row = 0;
@@ -18,13 +18,21 @@ void setcolor(char c) {
 }
 
 void putc(char c) {
-	unsigned short* vidmem = (unsigned short*)0xB8000;
+	unsigned short* vidmem = (unsigned short*)SCREENADDRESS;
 	unsigned short index = row * 80 + col;
 
 	switch (c) {
 	case '\n':
 		col = 0;
-		row++;
+		if (row == 23) {
+			for (int i = 1; i < 22; i++) {
+				index = i * 80;
+				memcpy(&vidmem[index], &vidmem[index + 80], 80);
+			}
+		}
+		else {
+			row++;
+		}
 		break;
 	case KC_BACK:
 		if (col > 0) {
@@ -105,4 +113,12 @@ void printf(char* format, ...) {
 		}
 		format++;
 	}
+}
+
+int getrow() {
+	return row;
+}
+
+int getcol() {
+	return col;
 }

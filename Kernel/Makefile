@@ -14,5 +14,5 @@ kernel: $(OBJ)
 	nasm -f elf $(SRCDIR)/gdtflush.asm -o $(OBJDIR)/gdtflush.o
 	nasm -f elf $(SRCDIR)/idtload.asm -o $(OBJDIR)/idtload.o
 	
-	ld -Ttext 0x1000 $(OBJDIR)/Kernel_entry.o $(OBJDIR)/gdtflush.o $(OBJDIR)/idtload.o $^ -o $(OBJDIR)/kernel.tmp
+	ld -T nul -Ttext 0x1000 $(OBJDIR)/Kernel_entry.o $(OBJDIR)/gdtflush.o $(OBJDIR)/idtload.o $^ -o $(OBJDIR)/kernel.tmp
 	objcopy -O binary $(OBJDIR)/kernel.tmp $(OBJDIR)/kernel.bin
