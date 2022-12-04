@@ -6,11 +6,11 @@ KERNEL_OFFSET equ 0x1000
     mov bp, 0x8000			;Set stack   It's a little above the bootsector
     mov ss, bp
     mov sp, 0xf000
-    
-    mov ah, 0x00
-    mov al, 0x03
+   
+    mov ah, 0x00                        ;Set graphics mode to 13h, 320x200 256 colors
+    mov al, 0x13
     int 0x10
-    
+   
     call load_kernel                    ;Load kernel
     
     call switch_to_pm                   ;Switch to 32 bit mode
@@ -57,8 +57,7 @@ gdt_end:
 gdt_descriptor:
     dw gdt_end - gdt_start - 1
     dd gdt_start
-    
-    
+          
 CODE_SEG equ gdt_code - gdt_start
 DATA_SEG equ gdt_data - gdt_start
 

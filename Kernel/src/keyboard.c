@@ -117,7 +117,8 @@ void int_kb(void) {
 			if (shift != capslock) {
 				key = keyboardmap[(int)keycode * 2 + 1];
 			}
-			ProcKey(key);
+			sp_putc(key);
+			putc(key);
 		}
 	}
 	else {

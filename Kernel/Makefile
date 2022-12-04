@@ -3,7 +3,7 @@ CC = gcc -ffreestanding -Wall
 SRCDIR=src
 
 OBJDIR=bin
-_OBJ=kernel.o terminal.o string.o math.o ports.o cursor.o gdt.o memory.o idt.o pic.o serial_port.o keyboard.o pit.o exceptions.o shell.o
+_OBJ=kernel.o terminal.o string.o math.o ports.o cursor.o gdt.o memory.o idt.o pic.o serial_port.o keyboard.o pit.o exceptions.o shell.o vga.o
 OBJ=$(patsubst %,$(OBJDIR)/%,$(_OBJ))
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c

@@ -1,52 +1,32 @@
 #define __TERMINAL__
 #include "../include/terminal.h"
 
-void clrscr() {
-	unsigned short* vidmem = (unsigned short*)SCREENADDRESS;
-
-	for (int i = 0; i < 2000; i++) {
-		vidmem[i] = ((unsigned short)color << 8) | '\0';
-	}
-	col = 0;
-	row = 0;
-
-	cur_setpos(0, 0);
-}
-
 void setcolor(char c) {
 	color = c;
 }
 
 void putc(char c) {
-	unsigned short* vidmem = (unsigned short*)SCREENADDRESS;
-	unsigned short index = row * 80 + col;
-
 	switch (c) {
-	case '\n':
+	case '\n':	//Enter
 		col = 0;
-		if (row == 23) {
-			for (int i = 1; i < 22; i++) {
-				index = i * 80;
-				memcpy(&vidmem[index], &vidmem[index + 80], 80);
-			}
-		}
-		else {
-			row++;
-		}
+		row++;
 		break;
-	case KC_BACK:
+	case 0x08:
 		if (col > 0) {
 			col--;
-			vidmem[index - 1] = ((unsigned short)color << 8) | ' ';
 		}
+		else if (row > 0) {
+			col = COLMAX - 1;
+			row--;
+		}
+		draw_char_13h(col * 8, row * 8, ' ', color);
 		break;
 	default:
-		vidmem[index] = ((unsigned short)color << 8) | c;
+		draw_char_13h(col * 8, row * 8, c, color);
 		col++;
-		break;
 	}
 
-	if (col == 80) {
+	if (col == COLMAX) {
 		col = 0;
 		row++;
 	}

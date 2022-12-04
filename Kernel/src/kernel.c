@@ -1,10 +1,11 @@
 #include "../include/string.h"
 #include "../include/gdt.h"
 #include "../include/idt.h"
-#include "../include/serial_port.h"
 #include "../include/pit.h"
 #include "../include/keyboard.h"
+#include "../include/vga.h"
 
+/*Main method which is called after booting and switching to 32 bit*/
 void start() {
 	setup_idt();
 	init_pic();
@@ -18,6 +19,6 @@ void start() {
 	init_serial();
 
 	clrscr();
-	setcolor(0x0F);
+	setcolor(0xF);
 	printf("Welcome to AcridOs V0.2.0\n");
 }
