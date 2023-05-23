@@ -20,7 +20,7 @@ disk_load:
     push dx
     
     mov ah, 0x02
-    mov al, 52      ;amount of sectors to read
+    mov al, 128     ;amount of sectors to read
     mov ch, 0x00
     mov cl, 0x02
     mov dh, 0x00

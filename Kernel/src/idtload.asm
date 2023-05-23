@@ -46,6 +46,7 @@ _irqdef_handler:
 
 _irq0_handler:
     SAVE_REGS
+    mov eax, [esp]
     call _exc_div0
     RESTORE_REGS
     iret

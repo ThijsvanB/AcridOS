@@ -4,20 +4,11 @@
 #define ROWMAX 25
 
 #include "math.h"
-#include "cursor.h"
 #include "serial_port.h"
 #include "memory.h"
 #include "vga.h"
 
-#ifdef __TERMINAL__
-
-char col = 0;
-char row = 0;
-char color = 0x0F;
-
-#endif
-
-void clrscr();
+void terminalInit();
 
 void setcolor(char c);
 

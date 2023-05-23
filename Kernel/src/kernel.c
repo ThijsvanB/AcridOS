@@ -14,9 +14,8 @@ void start() {
 
 	asm("sti");
 
-	cur_enable();
-
 	init_serial();
+	terminalInit();
 
 	clrscr();
 	setcolor(0xF);
