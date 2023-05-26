@@ -4,6 +4,8 @@
 #include "../include/pit.h"
 #include "../include/keyboard.h"
 #include "../include/vga.h"
+#include "../include/USB.h"
+#include "../include/PCI.h"
 
 /*Main method which is called after booting and switching to 32 bit*/
 void start() {
@@ -20,4 +22,8 @@ void start() {
 	clrscr();
 	setcolor(0xF);
 	printf("Welcome to AcridOs V0.2.0\n");
+
+	findUSBDevices();
+	printf("Dev %i, %i\n", pciConfigReadWord(0, 0, 0, 0), pciConfigReadWord(0, 0, 0, 2));
+	checkDevices(0, 0);
 }

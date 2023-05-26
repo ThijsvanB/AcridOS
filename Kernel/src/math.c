@@ -6,6 +6,5 @@ int ToPower(int num, int pow) {
 	for (int i = 0; i < pow; i++) {
 		ret *= num;
 	}
-	sp_printf("ToPower: %i\n", ret);
 	return ret;
 }

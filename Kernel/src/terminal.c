@@ -21,7 +21,6 @@ void setcolor(char c) {
 }
 
 void putc(char c) {
-	sp_printf("%i %i %c\n", row, col, c);
 	switch (c) {
 	case '\n':	//Enter
 		col = 0;
