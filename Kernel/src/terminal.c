@@ -64,24 +64,12 @@ void putc(char c) {
 }
 
 void puti(int i) {
-	int digits;
-	for (digits = 0;; digits++) {
-		int pow = ToPower(10, digits);
-		if ((i / pow) < 1) {
-			break;
-		}
+	if (i < 10) {
+		putc('0' + i);
 	}
-
-	for (int x = digits; x >= 0; x--) {
-		int val;
-		if (x == 0) {
-			val = i;
-		}
-		else {
-			val = i / ToPower(10, x - 1);
-		}
-		putc(48 + val);
-		i -= val * ToPower(10, x - 1);
+	else {
+		puti(i / 10);
+		putc('0' + i % 10);
 	}
 }
 

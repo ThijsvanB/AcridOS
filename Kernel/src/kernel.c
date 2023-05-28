@@ -25,4 +25,6 @@ void start() {
 
 	findUSBDevices();
 	checkDevices();
+
+	printf("%i", 50);
 }
