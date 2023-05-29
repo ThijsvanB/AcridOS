@@ -24,7 +24,5 @@ void start() {
 	printf("Welcome to AcridOs V0.2.0\n");
 
 	findUSBDevices();
-	checkDevices();
-
-	printf("%i", 50);
+	checkPCIDevices();
 }

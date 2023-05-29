@@ -15,8 +15,30 @@ typedef struct PCI_HEADER {
 	unsigned char cacheLineSize;
 } pci_header;
 
+typedef struct PCI_HEADER0 {
+	pci_header header;
+	unsigned int baseAddrs[6];
+	unsigned int cardbus;
+	unsigned short subsystemId;
+	unsigned short subsytemVendorId;
+	unsigned int expansionRom;
+	unsigned char capabilitiesPointer;
+	unsigned char maxLatency;
+	unsigned char minGrant;
+	unsigned char interruptPin;
+	unsigned char interruptLine;
+} pci_header0;
+
+typedef struct PCI_DEVICE {
+	pci_header header;
+
+	pci_header0 header0;
+} pci_device;
+
 unsigned int pciConfigReadReg(unsigned char bus, unsigned char slot, unsigned char func, unsigned char offset);
 
-void checkDevices();
+void checkPCIDevices();
 
-pci_header getDevice(unsigned char bus, unsigned char slot);
+pci_device getPCIDevice(unsigned char bus, unsigned char slot);
+
+pci_header0 getPCI0Header(unsigned char bus, unsigned char slot);

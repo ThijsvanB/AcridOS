@@ -1,25 +1,80 @@
+Detected PCI header 0
 Vendor: 32902, Device: 4663
 259 0
 2 0 0 6
 0 0 0 0
+Header 0:
+0
+0
+0
+0
+0
+0
+0
+4352 6900
+0
+0
+17 0 26 244
 
+Error detecting PCI header, value gotten: 128
 Vendor: 32902, Device: 28672
 259 512
 0 0 1 6
 0 0 128 0
+Header 128:
+No specific header
 
+Detected PCI header 0
 Vendor: 4660, Device: 4369
 259 0
 2 0 0 3
 0 0 0 0
+Header 0:
+8
+0
+0
+0
+0
+0
+0
+4352 6900
+0
+0
+17 0 26 244
 
+Detected PCI header 0
 Vendor: 32902, Device: 4110
 259 0
 3 0 0 2
 0 0 0 0
+Header 0:
+0
+49153
+0
+0
+0
+0
+0
+4352 6900
+0
+0
+17 0 26 244
 
+Detected PCI header 0
 Vendor: 6966, Device: 13
 263 16
 1 48 3 12
 0 0 0 0
+Header 0:
+4
+0
+0
+0
+0
+0
+0
+4352 6900
+0
+144
+17 0 26 244
 
